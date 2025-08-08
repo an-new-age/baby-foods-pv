@@ -103,8 +103,9 @@ body {
     min-height: 300px;
     width: 100%;
     padding: 40px 16px 80px 16px;
-    background: linear-gradient(153deg, #faa898 45%, #FFB6A7 100%);
+    background: linear-gradient(153deg, #e2998a 45%, #df9e91 100%);
     color: #FFFFFF;
+    /* color: #ecf1fe; */
     text-align: center;
 }
 
@@ -442,13 +443,13 @@ body {
 
 .cta-button, .resume-cta-button {
     display: inline-block;
-    background-color: #32A300;
+    background-color: #E11D48;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 12px;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 900;
     text-transform: uppercase;
     border-radius: 15px;
     margin-top: 15px;

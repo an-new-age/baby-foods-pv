@@ -18,47 +18,67 @@ const infos = {
   heroSection: {
     headline: '<span style="color: red;">🍎Comidinhas do Bebê🍐</span>',
     subHeadline: '+100 receitas nutritivas e emocionantes para transformar a alimentação do seu bebê',
-    ctaButtonText: 'QUERO GARANTIR A APROVAÇÃO',
+    ctaButtonText: 'QUERO TRANSFORMAR A ALIMENTAÇÃO DO MEU BEBÊ',
     vslPath: './assets/vsl1.mp4'
   },
   receiveList: [
-    '500 Questões de matemática de Colégios Militares - 6º ano',
-    'Gabarito com as respostas',
-    'Respostas comentadas, explicadas e detalhadas com didática',
-    'Garantia incondicional de 15 dias',
+    'Mães com bebês entre 6 e 12 meses',
+    'Que sentem culpa, cansaço ou insegurança',
+    'Que tentaram de tudo e ainda não viram resultado',
+    'Que querem transformar a hora da comida em um momento feliz',
+    'Mães que trabalham e precisam de praticidade',
+    'Garantia incondicional de 30 dias',
   ],
-  testimonialsPaths: [
-    './assets/depoimento (1).png',
-    './assets/depoimento (2).png',
-    './assets/depoimento (3).png',
-    './assets/depoimento (4).png',
-    './assets/depoimento (5).png'
-  ],
+  testimonialsPaths: {
+    title: "Depoimentos",
+    items: [
+      './assets/depoimento (1).png',
+      './assets/depoimento (2).png',
+      './assets/depoimento (3).png',
+      './assets/depoimento (4).png',
+      './assets/depoimento (5).png'
+    ]
+  },
+  insideEbook: {
+    title: "Veja por dentro do eBook!",
+    items: [
+      './assets/content/content (1).png',
+      './assets/content/content (1).jpg',
+      './assets/content/content (2).jpg',
+      './assets/content/content (3).jpg',
+      './assets/content/content (4).jpg',
+      './assets/content/content (5).jpg',
+      './assets/content/content (6).jpg',
+      './assets/content/content (7).jpg',
+      './assets/content/content (8).jpg',
+    ]
+  },
   advantages: [
     {
-      icon: '<i class="fas fa-star icon"></i>',
-      title: 'Certeza do caminho',
-      description: 'Tenha certeza que está guiando seu filho pelo melhor caminho rumo a aprovação na prova!'
+      icon: '<span style="font-size: 2.5rem;">👶</span>',
+      title: 'Por Idade',
+      description: 'Receitas adaptadas para cada fase do desenvolvimento'
     },
     {
-      icon: '<i class="fas fa-heart icon"></i>',
-      title: 'Questões Selecionadas',
-      description: 'Questões selecionadas a dedo - seu filho vai treinar com questões e respostas que já caíram, isso aumenta muito a chance de aprovação!'
+      icon: '<span style="font-size: 2.5rem;">🥄</span>',
+      title: 'Por Textura',
+      description: 'Do mais lisinho ao mais texturizado, respeitando o desenvolvimento'
     },
     {
-      icon: '<i class="fas fa-surprise icon"></i>',
-      title: 'Única oportunidade',
-      description: 'Dê a oportunidade do seu filho ter uma educação superior, se destacar na vida e ser alguém. Que pai e mãe não sonham com um filho bem sucedido? Isso começa na infância com uma educação de qualidade.'
+      icon: '<span style="font-size: 2.5rem;">🍲</span>',
+      title: 'Por Refeição',
+      description: 'Café da manhã, almoço, lanche e jantar completos'
     }
   ],
   targets: {
-    title: 'Para quem são essas questões?',
+    title: 'Para quem é?',
     items: [
-      'Famílias que querem uma preparação de alto nível, mas de forma mais acessível',
-      'Pais que buscam uma educação de excelência, com disciplina e valores',
-      'Crianças e pré-adolescentes com grande potencial, que só precisam do direcionamento certo',
-      'Pais que se envolvem e estudam junto com os filhos em casa',
-      'Alunos que entendem que a prática e a resolução de provas antigas é o caminho para a aprovação',
+      'Mães com bebês entre 6 e 12 meses',
+      'Que sentem culpa, cansaço ou insegurança',
+      'Que tentaram de tudo e ainda não viram resultado',
+      'Que querem transformar a hora da comida em um momento feliz',
+      'Mães que trabalham e precisam de praticidade',
+      'Garantia incondicional de 7 dias',
     ]
   },
   bonuses: [
@@ -121,10 +141,33 @@ function App() {
     <div className="App">
       {/* <CountdownBar /> */}
       <HeroSection {...infos.heroSection} />
-      <FeaturesSection receiveList={infos.receiveList} />
-      <TestimonialsCarousel testimonialsPaths={infos.testimonialsPaths} />
+      <div style={{ padding: '16px' }}>
+        <h2 style={{color: '#E11D48'}}>"Meu bebê não quer comer... o que eu faço?"</h2>
+        <br />
+        <span>Se você sente um aperto no peito cada vez que ele empurra o pratinho...</span>
+        <br />
+        <span>Se já chorou escondida depois de mais uma tentativa frustrada...</span>
+        <br />
+        <span>Se sente culpa por achar que está falhando...</span>
+        <br />
+        <strong>Você não está sozinha.</strong>
+        <br />
+        <br />
+        <div style={{
+            backgroundColor: '#ecf1fe', 
+            padding: '20px', 
+            fontSize: '15px',
+            borderLeft: 'solid #E11D48 4px'
+          }}> 
+          <em>Esse eBook foi feito <strong>para mães</strong> que só querem ver seus filhos crescendo saudáveis, felizes e bem alimentados.</em>
+        </div>
+        <br />
+      </div>
       <AdvantagesSection advantages={infos.advantages} />
       <TargetAudienceSection targets={infos.targets} />
+      <TestimonialsCarousel {...infos.insideEbook} />
+      {/* <FeaturesSection receiveList={infos.receiveList} /> */}
+      <TestimonialsCarousel {...infos.testimonialsPaths} />
       {/* <StepsSection /> */}
       <BonusSection bonuses={infos.bonuses} />
       <PricingSection />

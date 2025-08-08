@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
 
-const TestimonialsCarousel = ({testimonialsPaths}) => {
+const TestimonialsCarousel = ({items, title}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % testimonialsPaths.length);
+    setCurrentSlide((prev) => (prev + 1) % items.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + testimonialsPaths.length) % testimonialsPaths.length);
+    setCurrentSlide((prev) => (prev - 1 + items.length) % items.length);
   };
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
   };
 
-  return testimonialsPaths.length ? (
+  return items.length ? (
     <section style={{ backgroundColor: '#F0F2F5', padding: '0px 0px' }}>
       <div className="carousel-container">
         <h2 style={{ fontSize: '35px', marginBottom: '40px', fontFamily: 'Poppins, sans-serif' }}>
-          Depoimentos
+          {title}
         </h2>
         
         <div className="carousel-track">
-          {<img class="print" src={testimonialsPaths[currentSlide]} />}
+          {<img class="print" src={items[currentSlide]} />}
         </div>
         
         <div className="carousel-buttons">
@@ -36,7 +36,7 @@ const TestimonialsCarousel = ({testimonialsPaths}) => {
         </div>
         
         <div className="carousel-dots">
-          {testimonialsPaths.map((_, index) => (
+          {items.map((_, index) => (
             <span
               key={index}
               className={`dot ${index === currentSlide ? 'active' : ''}`}
