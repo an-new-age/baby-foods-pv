@@ -12,7 +12,27 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style">
     <!-- Carregar CSS de forma assíncrona -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@400;700&family=Roboto:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
-
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      
+      document.body.style.webkitUserSelect = 'none';
+      document.body.style.mozUserSelect = 'none';
+      document.body.style.msUserSelect = 'none';
+      document.body.style.userSelect = 'none';
+      
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      
+      console.log('%cPARIGO!', 'color: red; font-size: 50px; font-weight: bold;');
+      console.log('%cEste é um recurso do navegador destinado a desenvolvedores.', 'color: red; font-size: 16px;');
+    });
+  </script>
   </head>
   <body>
     <noscript>Você precisa habilitar o JavaScript para executar este aplicativo.</noscript>

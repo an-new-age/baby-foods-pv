@@ -6,6 +6,32 @@ const HeroSection = ({
   ctaButtonText,
   vslPath
 }) => {
+
+  React.useEffect(() => () => {
+    const videoContainer = document.querySelector('.video-container');
+      const videoElement = document.querySelector('.video-hero');
+      const playPlayer = document.querySelector('.play-player');
+
+      if (videoContainer && videoElement && playPlayer) {
+          videoContainer.addEventListener('click', function() {
+              // Recomeça o vídeo do início
+              videoElement.currentTime = 0;
+
+              // Verifica se o vídeo está pausado ou não iniciado
+              if (videoElement.paused) {
+                  // Inicia o vídeo
+                  videoElement.play();
+              }
+
+              // Desmuta o vídeo
+              videoElement.muted = false;
+
+              // Esconde o play-player
+              playPlayer.style.display = 'none';
+          });
+      }
+  }, [])
+
   return (
     <section className="hero-section">
       <h1>

@@ -19,7 +19,7 @@ const infos = {
     headline: '<span style="color: red;">ÚLTIMO AVISO:</span> Pack Exclusívo com 500 Questões Militares Comentadas Pode Sair do Ar em 48 Horas!',
     subHeadline: 'Quer ver seu filho(a) passar no Colégio Militar? Mais de 500 questões, atualizadas e organizadas para facilitar o estudo.',
     ctaButtonText: 'QUERO GARANTIR A APROVAÇÃO',
-    vslPath: './assets/vsl2.mp4'
+    vslPath: './assets/vsl1.mp4'
   },
   receiveList: [
     '500 Questões de matemática de Colégios Militares - 6º ano',
