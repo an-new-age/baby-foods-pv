@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Vendas - Pack de Bio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Implementar preload para recursos críticos -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@400;700&family=Roboto:wght@400;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style">
+    <!-- Carregar CSS de forma assíncrona -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@400;700&family=Roboto:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+
+    <style>
+        /* =================================
+           Configurações Globais e Reset
+        ================================= */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            /* Garante que o conteúdo não fique escondido atrás da barra do topo */
+            padding-top: 60px; /* Espaço para a barra de contagem regressiva */
+            width: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Classes Utilitárias */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        /* =================================
+           Barra de Contagem Regressiva Fixa
+        ================================= */
+        .countdown-bar-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+            background-color: #000408;
+            color: red;
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 0px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+            border: solid red 4px;
+        }
+
+        .countdown-bar-fixed .countdown-timer {
+            background: #23233a;
+            color: red;
+            border-radius: 8px;
+            padding: 6px 10px;
+            margin-left: 18px;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+        }
+
+        /* =================================
+           Seção Principal (Hero)
+        ================================= */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 24px;
+            min-height: 300px;
+            width: 100%;
+            padding: 40px 16px 80px 16px;
+            background: linear-gradient(153deg, #000000 45%, #065287 100%);
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 72px;
+            font-weight: 400;
+            line-height: 1.2em;
+            max-width: 43%;
+        }
+
+        .hero-section .video-iframe {
+            border: none;
+            max-width: 100%;
+        }
+
+        .hero-section p {
+            max-width: 55%;
+            font-family: 'Globals', sans-serif; /* Assumindo uma fonte global */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        /* =================================
+           Seção de Imagens e Títulos
+        ================================= */
+        .image-showcase-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .image-showcase-section .section-title {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            font-size: 28px;
+            color: #000000;
+        }
+        
+        .image-showcase-section .section-title span {
+            color: red;
+        }
+        
+        .image-showcase-section .showcase-image {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        
+        .image-showcase-section .rounded-image {
+            border-radius: 36px;
+        }
+        
+        /* =================================
+           Seção de Depoimentos e Vantagens
+        ================================= */
+        .features-section {
+            background-color: #FFFFFF;
+            padding: 60px 20px;
+        }
+        
+        .features-section h2, .features-section h3 {
+             font-family: 'Poppins', sans-serif;
+             font-weight: 700;
+             color: #212529;
+             text-align: center;
+             margin-bottom: 20px;
+        }
+
+        .features-section h2 {
+            font-size: 35px;
+        }
+        
+        .features-section h3 {
+            font-size: 35px;
+            margin-top: 52px;
+        }
+        
+        .testimonials-carousel {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto; /* Permite rolar se as imagens não couberem */
+            padding-bottom: 15px;
+        }
+        
+        .testimonials-carousel img {
+            max-width: 30%;
+            border-radius: 12px;
+        }
+        
+        .features-list {
+            list-style: none;
+            padding-left: 0;
+            max-width: 75%;
+            margin: 16px 8px;
+        }
+        
+        .features-list li {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            color: #212529;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+        
+        .features-list .icon {
+            color: #42D202;
+            font-size: 26px;
+        }
+
+        /* Cards de Vantagens */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-top: 30px;
+        }
+        
+        .advantage-card {
+            background: linear-gradient(165deg, #000204 4%, #065083 69%);
+            color: #FFFFFF;
+            padding: 28px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .advantage-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .advantage-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .advantage-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* =================================
+           Seção de Bônus
+        ================================= */
+        .bonus-section {
+            background-color: #f0f2f5;
+            padding: 60px 20px;
+        }
+        
+        .bonus-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #000;
+            margin-bottom: 30px;
+        }
+
+        .bonus-title span {
+            color: red;
+        }
+
+        .bonus-title #bonusTimer {
+            background-color: red;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 5px;
+        }
+        
+        .bonus-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: linear-gradient(132deg, #000000, #065287);
+            border-radius: 15px;
+            padding: 40px;
+            color: #FFFFFF;
+            margin: 20px auto;
+            max-width: 80%;
+            align-items: center;
+        }
+        
+        .bonus-card-image {
+            flex: 1 1 30%;
+            text-align: center;
+        }
+        
+        .bonus-card-image img {
+            max-width: 100%;
+            border-radius: 20px;
+        }
+        
+        .bonus-card-content {
+            flex: 1 1 60%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .bonus-card-content .bonus-tag {
+            font-family: 'Poppins', sans-serif;
+            font-size: 25px;
+            color: #F3F401;
+            font-weight: 400;
+        }
+
+        .bonus-card-content h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 25px;
+            font-weight: 700;
+        }
+        
+        .bonus-card-content .price {
+            font-family: 'Poppins', sans-serif;
+            font-size: 25px;
+        }
+
+        .bonus-card-content .price del {
+            color: #e03130;
+        }
+        
+        .bonus-card-content .price .free {
+            color: #00FF00;
+        }
+        
+        .bonus-card-content p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* =================================
+           Seção de Preços
+        ================================= */
+        .pricing-section {
+            background-color: #000000;
+            padding: 60px 20px;
+            width: 100%;
+        }
+
+        .pricing-section .section-title {
+            color: #FFFFFF;
+            font-family: 'Poppins', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .pricing-card {
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            flex: 1;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .pricing-card.pro {
+            border: 2px solid #DFBB16;
+            position: relative;
+        }
+        
+        .pricing-card .best-seller-tag {
+            color: #FF0000;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 35px;
+            font-weight: 400;
+        }
+        
+        .pricing-card .price-old {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+        }
+        .pricing-card .price-old del {
+            color: #e03130;
+        }
+        
+        .pricing-card .price-new {
+            font-family: 'Poppins', sans-serif;
+            font-size: 80px;
+            font-weight: 700;
+            color: #0B9C00;
+            margin: -20px 0;
+        }
+
+        .pricing-card hr {
+            border: none;
+            border-top: 1px solid #BDBDBD;
+            width: 86%;
+            margin: 0 auto;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .pricing-card ul li {
+            margin-bottom: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #32A300;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            text-transform: uppercase;
+            border-radius: 15px;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #288a00;
+        }
+
+        /* =================================
+           Seção de FAQ (Perguntas Frequentes)
+        ================================= */
+        .faq-section {
+            background: linear-gradient(165deg, #000204 62%, #065083 100%);
+            padding: 60px 20px;
+            width: 100%;
+        }
+
+        .faq-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 35px;
+            color: #FFFFFF;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .faq-accordion-list {
+            max-width: 900px;
+            margin: 0 auto;
+            list-style: none;
+        }
+        
+        .faq-accordion-item {
+            border-bottom: 1px solid #28283a;
+        }
+        
+        .faq-accordion-question {
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 28px 56px 28px 12px;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            position: relative;
+            outline: none;
+            transition: background 0.2s;
+        }
+        
+        .faq-accordion-question:hover {
+            background: #23233a;
+        }
+        
+        .faq-accordion-icon {
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 28px;
+            color: #fff;
+            transition: transform 0.2s;
+        }
+        
+        .faq-accordion-item.open .faq-accordion-icon {
+            transform: translateY(-50%) rotate(45deg);
+        }
+        
+        .faq-accordion-answer {
+            color: #cfd8dc;
+            font-size: 17px;
+            border-radius: 8px;
+            margin: 0 12px 24px 12px;
+            padding: 20px 18px;
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        
+        .faq-accordion-item.open .faq-accordion-answer {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* =================================
+           Rodapé
+        ================================= */
+        footer {
+            background-color: #000000;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 40px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+
+        /* =================================
+           Responsividade (Mobile)
+        ================================= */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 54px; /* Ajuste para barra menor */
+            }
+
+            .countdown-bar-fixed {
+                font-size: 16px; /* Ajustei o valor do JSON que era muito grande */
+                padding: 10px 0px;
+                flex-direction: row;
+                gap: 5px;
+            }
+
+            .countdown-bar-fixed .countdown-timer {
+                font-size: 18px; /* Ajustei o valor do JSON */
+                padding: 4px 12px;
+                margin-left: 0;
+            }
+
+            .hero-section h1 {
+                font-size: 34px;
+                max-width: 100%;
+            }
+            .hero-section p {
+                max-width: 90%;
+
+            }
+
+            .testimonials-carousel img {
+                 max-width: 80%; /* Mostra uma imagem e um pouco da próxima */
+            }
+
+            .features-list {
+                max-width: 100%;
+            }
+            
+            .bonus-card {
+                flex-direction: column;
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            .pricing-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .pricing-card {
+                width: 100%;
+                max-width: 90vw;
+            }
+        }
+        
+        .carousel-container {
+            width: 100vw;
+            max-width: 100%;
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #F0F2F5;
+            padding: 32px 0;
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 90vw;
+        }
+        
+        .carousel-slide {
+            width: 90vw;
+            flex: 0 0 90vw;
+            display: none;
+        }
+        
+        .carousel-slide.active {
+            display: block;
+        }
+        
+        .carousel-buttons {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            z-index: 10;
+        }
+        
+        .carousel-button {
+            background-color: rgba(0, 71, 171, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .carousel-button:hover {
+            background-color: rgba(0, 71, 171, 1);
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            gap: 8px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .dot.active {
+            background-color: #0047AB;
+        }
+        
+        /* Card Styles */
+        .depoiment-card {
+            width: 90vw;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 30px;
+            margin: 0 auto;
+        }
+        
+        .depoiment-card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .depoiment-avatar-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0047AB, #4169E1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .depoiment-user-info {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .depoiment-user-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .depoiment-user-school {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .depoiment-user-responsible {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .depoiment-achievement {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .depoiment-achievement-badge {
+            background-color: #f8f4ff;
+            color: #6a11cb;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        .depoiment-achievement-text {
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .depoiment-testimonial {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            border-left: 4px solid #0047AB;
+            margin-top: 15px;
+            text-align: left;
+        }
+        
+        .depoiment-highlight {
+            color: #0047AB;
+            font-weight: bold;
+        }
+
+        .video-hero {
+            /* aspect-ratio: 3 / 5; */
+            width: 80vw;
+            height: auto;
+            border-radius: 30px;
+            border: #0047AB 2px solid;
+            object-fit: cover;
+        }
+
+        .poc {
+            border: #0047AB 2px solid;
+            border-radius: 8px;
+            width: 70vw;
+        }
+
+        .play-player {
+            position: absolute;
+            z-index: 9998;
+            background-color: #0047ab7e;
+            width: 220px;
+            height: 150px;
+            left: 50%;
+            top: 50%;
+            border-radius: 10px;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+            animation: linear infinite reverse playPlayer 1s;
+        }
+
+        @keyframes playPlayer {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            } 
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            } 
+        }
+
+        .play-player > .icon {
+            font-size: 36px;
+        }
+
+        .video-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+    </style>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sk4chj6k6s");
+    </script>
+    <script
+        src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+        data-utmify-prevent-xcod-sck
+        data-utmify-prevent-subids
+        async
+        defer
+        >
+    </script>
+    <script>
+        window.pixelId = "6881a726ceb98bc3efaf1e8b";
+        var a = document.createElement("script");
+        a.setAttribute("async", "");
+        a.setAttribute("defer", "");
+        a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+        document.head.appendChild(a);
+      </script>
+</head>
+<body>
+    <div class="countdown-bar-fixed">
+      O desconto termina em
+      <span class="countdown-timer" id="top-countdown-timer">12:34</span>
+    </div>
+
+    <section class="hero-section">
+        <h1><span style="color: red;">ÚLTIMO AVISO:</span> Pack Exclusívo com 500 Questões Militares Comentadas Pode Sair do Ar em 48 Horas!
+            <br/>
+            <!-- <span style="color: rgb(74, 245, 74);">Clique no vídeo abaixo!</span> <br/> -->
+        </h1>
+        <div class="video-container">
+            <div class="play-player">
+                <p>Seu video começou</p>
+                <p class="icon">📢</p>
+                <p>Clique para ouvir</p>
+            </div>
+            <video class="video-hero"
+                controls
+                autoplay
+                muted
+                playsinline
+                preload="metadata">
+                <source src="assets/vsl2.mp4" type="video/mp4">
+                Seu navegador não suporta o formato de vídeo.
+            </video>
+        </div>
+        <!-- <img loading="lazy" class="poc" src="assets/Matriculas-Abertas - full.png" /> -->
+        <!-- <p>Quer ver seu filho(a) passar no Colégio Militar? Mais de 500 questões, atualizadas e organizadas para facilitar o estudo.</span></p> -->
+        <a href="#vipPlanCTA" class="cta-button">Acessar as Questões</a>
+    </section>
+
+    <section class="container">
+        <h2>O que você irá receber?</h2>
+        <ul class="features-list">
+            <style>
+                li .fas {
+                    margin: 0px !important;
+                }
+            </style>
+            <li><i class="fas fa-check-circle icon"></i><strong>500 Questões de matemática de Colégios Militares - 6º ano</strong></li>
+            <li><i class="fas fa-check-circle icon"></i><strong>Gabarito com as respostas</strong></li>
+            <li><i class="fas fa-check-circle icon"></i><strong>Respostas comentadas, explicadas e detalhadas com didática</strong></li>
+            <li><i class="fas fa-check-circle icon"></i><strong>Garantia incondicional de 15 dias</strong></li>
+        </ul>
+    </section>
+
+
+    <section style="text-align: center; background-color: #F0F2F5; padding: 32px 4px;">
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- Card 1 - Guilherme -->
+                <div class="carousel-slide active">
+                    <div class="depoiment-card">
+                        <div class="depoiment-card-header">
+                            <div class="depoiment-avatar-placeholder">
+                                GO
+                            </div>
+                            <div class="depoiment-user-info">
+                                <h1 class="depoiment-user-name">Guilherme Oliveira Martini</h1>
+                                <p class="depoiment-user-school">Colégio Militar</p>
+                            </div>
+                        </div>
+                        
+                        <div class="depoiment-achievement">
+                            <span class="depoiment-achievement-text">Aprovado no Colégio Militar</span>
+                        </div>
+                        
+                        <div class="depoiment-testimonial">
+                            O Curso foi essencial na aprovação do Guilherme no concurso do Colégio Militar. Tivemos que nos adaptar a modalidade online e o Mais Militar proporcionou todo o apoio através de sua plataforma, lives, material didático e incontáveis conversas com a equipe, sempre muito atenciosos, fizeram com que o Guilherme fosse aprendendo e evoluindo cada vez mais, não somente no conteúdo em si, mas aprendendo a raciocinar nos mais variados exercícios propostos. Somado a isso, a dedicação e empenho do Guilherme e o nosso incentivo e acompanhamento, foram fatores que levaram à sua aprovação.
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Card 2 - Gabriel -->
+                <div class="carousel-slide">
+                    <div class="depoiment-card">
+                        <div class="depoiment-card-header">
+                            <div class="depoiment-avatar-placeholder">
+                                GS
+                            </div>
+                            <div class="depoiment-user-info">
+                                <h1 class="depoiment-user-name">Gabriel dos Santos Monteiro</h1>
+                                <p class="depoiment-user-school">Colégio Militar</p>
+                            </div>
+                        </div>
+                        
+                        <div class="depoiment-achievement">
+                            <span class="depoiment-achievement-badge">3º</span>
+                            <span class="depoiment-achievement-text">Aprovado em <span class="depoiment-highlight">3º lugar</span> no Colégio Militar</span>
+                        </div>
+                        
+                        <div class="depoiment-testimonial">
+                            No Mais Militar eu sentia que estava no caminho certo, o cursinho me ajudou bastante a ter disciplina nos estudos. Entrei no curso no meio do ano e conquistei a minha aprovação inicialmente no Colégio da Polícia Militar (CPM). No ano seguinte, por morar muito distante do CPM, eu comecei a estudar novamente para o Colégio Militar e consegui ser aprovado em terceiro lugar geral. No Mais Militar eu consegui criar um ambiente bom de estudo, resolvia as questões propostas, provas anteriores, simulados e etc... Meu pai teve um papel bem grande na minha aprovação, quando eu finalizava as aulas ele sempre olhava a apostila para ver como foi meu andamento/rendimento naquele dia. E essa energia foi fundamental para eu conseguir chegar a conquistar minha aprovação.
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Card 3 - Kauã -->
+                <div class="carousel-slide">
+                    <div class="depoiment-card">
+                        <div class="depoiment-card-header">
+                            <div class="depoiment-avatar-placeholder">
+                                KN
+                            </div>
+                            <div class="depoiment-user-info">
+                                <h1 class="depoiment-user-name">Kauã Nóbrega Leal</h1>
+                                <p class="depoiment-user-school">Colégio Militar</p>
+                            </div>
+                        </div>
+                        
+                        <div class="depoiment-achievement">
+                            <span class="depoiment-achievement-badge">2º</span>
+                            <span class="depoiment-achievement-text">Aprovado em <span class="depoiment-highlight">2º lugar</span> no Colégio Militar</span>
+                        </div>
+                        
+                        <div class="depoiment-testimonial">
+                            O curso foi fundamental para minha aprovação no Colégio Militar e ultrapassar todos os obstáculos encontrados. Além de ter passado na 2° colocação geral no concurso do CMC, tirei a medalha de prata na Olimpíada de Matemática - Canguru. Agradeço aos professores, a equipe do curso e a minha família que me incentivaram nos momentos mais difíceis e acreditaram no meu potencial. Agradeço também a Deus, por ter me concedido saúde, força e disposição. Foi graças a tudo isso, a todo esse incentivo que hoje posso celebrar este marco em minha vida. Ser Mais Militar faz toda a diferença!
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Card 4 - Larissa -->
+                <div class="carousel-slide">
+                    <div class="depoiment-card">
+                        <div class="depoiment-card-header">
+                            <div class="depoiment-avatar-placeholder">
+                                LG
+                            </div>
+                            <div class="depoiment-user-info">
+                                <h1 class="depoiment-user-name">Larissa Gonçalves Won Stein</h1>
+                                <p class="depoiment-user-school">Colégio Militar</p>
+                            </div>
+                        </div>
+                        
+                        <div class="depoiment-achievement">
+                            <span class="depoiment-achievement-badge">4º</span>
+                            <span class="depoiment-achievement-text">Aprovada em <span class="depoiment-highlight">4º lugar</span> no Colégio Militar</span>
+                        </div>
+                        
+                        <div class="depoiment-testimonial">
+                            O curso foi muito importante para mim, porque sem ele não saberia como aprofundar corretamente meus estudos e conquistar minha aprovação. Os professores são muito bons e dedicados. A equipe é excelente, todos dando apoio e motivação; assim como uma grande família. Só tenho a agradecer por todo tempo que passei estudando com o Curso.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botões de navegação -->
+            <div class="carousel-buttons">
+                <button class="carousel-button prev">&lt;</button>
+                <button class="carousel-button next">&gt;</button>
+            </div>
+            
+            <!-- Carousel Dots -->
+            <div class="carousel-dots">
+                <div class="dot active" data-index="0"></div>
+                <div class="dot" data-index="1"></div>
+                <div class="dot" data-index="2"></div>
+                <div class="dot" data-index="3"></div>
+            </div>
+        </div>
+    
+        <script>
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevButton = document.querySelector('.carousel-button.prev');
+            const nextButton = document.querySelector('.carousel-button.next');
+            let currentIndex = 0;
+            
+            // Função para mostrar um slide específico
+            function showSlide(index) {
+                // Limita o índice ao número de slides
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+                
+                // Atualiza o índice atual
+                currentIndex = index;
+                
+                // Remove a classe active de todos os slides e dots
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                // Adiciona a classe active ao slide e dot atual
+                slides[currentIndex].classList.add('active');
+                dots[currentIndex].classList.add('active');
+            }
+            
+            // Event listeners para os botões
+            prevButton.addEventListener('click', () => {
+                showSlide(currentIndex - 1);
+            });
+            
+            nextButton.addEventListener('click', () => {
+                showSlide(currentIndex + 1);
+            });
+            
+            // Event listeners para os dots
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'));
+                    showSlide(index);
+                });
+            });
+            
+            // Auto slide a cada 5 segundos
+            let autoSlideInterval = setInterval(() => {
+                showSlide(currentIndex + 1);
+            }, 5000);
+            
+            // Pausa o auto slide quando o mouse está sobre o carrossel
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+            
+            carouselContainer.addEventListener('mouseleave', () => {
+                autoSlideInterval = setInterval(() => {
+                    showSlide(currentIndex + 1);
+                }, 5000);
+            });
+        </script>
+    </section>
+
+    <section class="features-section container">
+        <div class="advantages-grid">
+            <div class="advantage-card">
+                <i class="fas fa-star icon"></i>
+                <h4>Certeza do caminho</h4>
+                <p>Tenha certeza que está guiando seu filho pelo melhor caminho rumo a aprovação na prova!</p>
+            </div>
+            <div class="advantage-card">
+                <i class="fas fa-heart icon"></i>
+                <h4>Questões Selecionadas</h4>
+                <p>Questões selecionadas a dedo - seu filho vai treinar com questões e respostas que já caíram, isso aumenta muito a chance de aprovação!</p>
+            </div>
+            <div class="advantage-card">
+                <i class="fas fa-surprise icon"></i>
+                <h4>Única oportunidade</h4>
+                <p>Dê a oportunidade do seu filho ter uma educação superior, se destacar na vida e ser alguém. Que pai e mãe não sonham com um filho bem sucedido? Isso começa na infância com uma educação de qualidade.</p>
+            </div>
+            <div class="advantage-card">
+                <i class="fas fa-book icon"></i>
+                <h4>Ideal para crianças a partir do 4º ano</h4>
+                <p>Feito especialmente para alunos que já têm base escolar e querem se preparar com antecedência pro 6º ano do Colégio Militar.</p>
+            </div>
+             <div class="advantage-card">
+                <i class="fab fa-whatsapp icon"></i>
+                <h4>Suporte Completo</h4>
+                <p>Conte com nosso suporte pelo whatsapp para qualquer dúvida que tiver com o material!</p>
+            </div>
+            <div class="advantage-card">
+                <i class="fas fa-clock icon"></i>
+                <h4>Economize tempo</h4>
+                <p>Conteúdo focado e atualizado com provas recentes, sem distrações ou materiais desnecessários.</p>
+            </div>
+            <div class="advantage-card">
+                <i class="fas fa-lock icon"></i>
+                <h4>Pagamento 100% seguro</h4>
+                <p>Seu pagamento vai ser processado por um getway de pagamentos autorizado pelo Banco Central com certificação do Governo Brasileiro.</p>
+            </div>
+            <div class="advantage-card">
+                <i class="fas fa-download icon"></i>
+                <h4>Acesso a atualizações futuras</h4>
+                <p>Tenha acesso aos novos itens adicionados de forma 100% gratuita!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Para quem são essas questões?</h2>
+        <ul class="features-list">
+            <li>
+                <i class="fas fa-check-circle icon"></i>
+                <strong>Famílias que querem uma preparação de alto nível, mas de forma mais acessível</strong>
+            </li>
+            <li>
+                <i class="fas fa-check-circle icon"></i>
+                <strong>Pais que buscam uma educação de excelência, com disciplina e valores</strong>
+            </li>
+            <li>
+                <i class="fas fa-check-circle icon"></i>
+                <strong>Crianças e pré-adolescentes com grande potencial, que só precisam do direcionamento certo</strong>
+            </li>
+            <li>
+                <i class="fas fa-check-circle icon"></i>
+                <strong>Pais que se envolvem e estudam junto com os filhos em casa</strong>
+            </li>
+            <li>
+                <i class="fas fa-check-circle icon"></i>
+                <strong>Alunos que entendem que a prática e a resolução de provas antigas é o caminho para a aprovação</strong>
+            </li>
+        </ul>
+    </section>
+
+    <section class="bonus-section container">
+        <style>
+            .ff {
+                font-weight: bold;
+                font-size: 18px;
+                background-color: #EEE;
+                padding: 20%;
+                color: #1c7d21;
+                border-radius: 12px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+            .ff1::before, .ff2::before, .ff3::before, .ff4::before {
+                content: "1";
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #000000;
+            }
+            .ff2::before {
+                content: "2";
+            }
+            .ff3::before {
+                content: "3";
+            }
+            .ff4::before {
+                content: "4";
+            }
+        </style>
+        <div class="bonus-card" style="margin-top: -80px;">
+            <h3 class="bonus-title">
+                <strong style="color: white;">
+                    Esses são os <span>4 passos rápidos</span> para acessar as questões:
+                </strong>
+            </h3>
+            <span style="
+                margin-top: -32px;
+                text-align: center; 
+                color: green; 
+                background-color: white;
+                padding: 8px 16px; border-radius: 5px; font-weight: bold;
+            ">Tudo em 5 minutos</span>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; height: auto;">
+                <span class="ff ff1">Sente em um lugar confortável</span>
+                <span class="ff ff2">Acesse as questões no e-mail</span>
+                <span class="ff ff3">Abra os PDFs</span>
+                <span class="ff ff4">Comece a responder</span>
+            </div>
+        </div>
+    </section>
+    
+    <section class="bonus-section container" style="margin-top: -90px;">
+        <h3 class="bonus-title">
+            <strong>
+                <span>3 Bônus Incríveis</span> para quem comprar nos próximos
+                <span id="bonusTimer">12:34</span> minutos
+            </strong>
+        </h3>
+        
+        <div class="bonus-card">
+            <div class="bonus-card-image">
+                <img loading="lazy" src="assets/pegadinha.jpg" alt="Bônus 1">
+            </div>
+            <div class="bonus-card-content">
+                <span class="bonus-tag">BÔNUS 1</span>
+                <h4>Como não cair nas pegadinhas das questões</h4>
+                <p class="price">Valor: <del>R$37,00</del> <span class="free">-> Grátis!</span></p>
+                <p>Guia teórico de tipos de pegadinhas que a Banca costuma por na prova para seu filho ficar atento.</p>
+            </div>
+        </div>
+        
+        <div class="bonus-card">
+            <div class="bonus-card-image">
+                <img loading="lazy" src="assets/mapa-mental.webp" alt="Bônus 2">
+            </div>
+            <div class="bonus-card-content">
+                <span class="bonus-tag">BÔNUS 2</span>
+                <h4>Mapa de conteúdo</h4>
+                <p class="price">Valor: <del>R$37,00</del> <span class="free">-> Grátis!</span></p>
+                <p>Veja quais são os assuntos de português e matemática que mais caem na prova, para poder acertar mais questões de maneira inteligente!</p>
+            </div>
+        </div>
+        
+        <div class="bonus-card">
+            <div class="bonus-card-image">
+                <img loading="lazy" src="assets/fml-flz.webp" alt="Bônus 3">
+            </div>
+            <div class="bonus-card-content">
+                <span class="bonus-tag">BÔNUS 3</span>
+                <h4>Como fazer seu filho gostar do estudo</h4>
+                <p class="price">Valor: <del>R$37,00</del> <span class="free">-> Grátis!</span></p>
+                <p>Guia embasado em psicologia com truques simples para fazer seu filho ter interesse e aprender a gostar de estudar!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section" id="pricing">
+        <h2 class="section-title">Escolha a Melhor Oferta Para Você</h2>
+        <div class="pricing-container">
+            <div class="pricing-card">
+                <h3><strong>Plano Basic</strong></h3>
+                <p class="price-old">De <del>R$37,00</del> por</p>
+                <p class="price-new">R$10</p>
+                <hr>
+                <ul>
+                    <li><strong>✅ 20 Questões Colégios Militares só com gabarito - 6º ano - Exército</strong></li>
+                </ul>
+                <a href="https://pay.kiwify.com.br/JaEkBps" class="cta-button">Quero a oferta simples</a>
+                <p style="font-weight: 900;">
+                    <strong>
+                        <span style="color: #ff0000;">MAS ANTES DE COMPRAR...</span>
+                    </strong> <br/>
+                    Temos uma oferta <span style="color: rgb(212, 148, 28);">AINDA MAIS</span> vantajosa para você!
+                    Leve mais e pague menos com nossa <span style="color: rgb(212, 148, 28);">MEGA OFERTA!</span>👇
+                </p>
+            </div>
+            <div class="pricing-card pro">
+                <h5 class="best-seller-tag"><strong>Mais Vendido</strong></h5>
+                <h3><strong>Plano Vip</strong></h3>
+                <img loading="lazy" src="assets/menino-mapa-mental.jpg" alt="Mockup do Pack Pro" style="max-width: 80%; margin: auto; border-radius: 16px;">
+                <!-- <img loading="lazy" src="assets/vip-plan.png" alt="Mockup do Pack Pro" style="max-width:100%; border-radius: 16px;"> -->
+                <p class="price-old">De <del>R$87,00</del> por</p>
+                <p class="price-new">R$27</p>
+                <hr>
+                <ul>
+                    <li><strong>✅ Combo 100 Questões Colégios Militares com explicação didática e detalhada - 6º ano - Exército</strong></li>
+                    <li><strong>✅ Combo 400 Questões Colégios Militares com gabarito - 6º ano - Exército</strong></li>
+                    <li><strong>✅ Como não cair nas pegadinhas das questões - entenda a mente da Banca</strong></li>
+                    <li><strong>✅ Mapa de conteúdo dos assuntos de português e matemática que mais caem na prova</strong></li>
+                    <li><strong>✅ Como os pais podem fazer o filho ter motivação pra gostar de estudar</strong></li>
+                    <li><strong>✅ Acesso as atualizações</strong></li>
+                    <li><strong>✅ Garantia de 15 Dias</strong></li>
+                    <li><strong>✅ Suporte por Whatsapp</strong></li>
+                </ul>
+                <a href="https://pay.kiwify.com.br/8gso4A3" id="vipPlanCTA" class="cta-button">Acessar as Questões</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="bonus-card" style="margin: 16px; padding: 32px; text-align: center;">
+        <h2>Rolou a página toda pro final?</h2>
+        <h3>Então leia esse resumo...</h3>
+        <div style="text-align: left;"> 
+            <p>O que você está vendo aqui é a chave da aprovação do seu filho, a oportunidade dele treinar e se destacar com um material de qualidade para o dia da prova.</p> 
+            <br/>
+            <p>São questões prontas e respondidas com explicação passo a passo com a didática cuidadosamente pensada para uma criança a partir do quarto ano entender e fixar da melhor maneira possível!</p>
+            <br/>
+            <p>E o melhor: você leva tudo isso por apenas R$10, com garantia de 14 dias para testar sem risco.</p>
+            <br/>
+            <p>Ao finalizar a compra, o acesso de todos os seus produtos chega direto no seu e-mail.</p>
+        </div>
+    </div>
+
+    <section style="text-align: center; margin-top: 48px; margin-bottom: 48px; padding: 16px">
+        <h1 style="font-size: 32px;">Você não tem nada a perder!</h1>
+        <br/>
+        <h3>Garantia incondicional de 14 dias!</h3>
+        <br/>
+        <img loading="lazy"
+         style="width: auto; height: 360px;"
+         src="assets/selo-garantia.png" alt="Selo de garantia" /> 
+         <br/>
+         <p style="font-weight: 900;">Tenho plena confiança na qualidade e utilidade do nosso material de questões, e para provar isso vou te dar 14 dias de garantia incondicional. Simples, direta e honesta:</p>
+         <br/>
+         <p>Se dentro de 14 dias após sua compra, você não estiver completamente satisfeito(a) com este material, basta nos enviar um e-mail solicitando o reembolso. Devolveremos 100% do seu investimento, sem perguntas e sem complicações.</p>
+         <br/>
+         <p>Adquira agora mesmo com total segurança, sabendo que seu filho terá duas semanas completas para estudar com nosso material!</p>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="section-title"><strong>Perguntas frequentes</strong></h2>
+        <ul class="faq-accordion-list" id="faq-accordion-list"></ul>
+    </section>
+
+    <footer>
+        <p>Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook.</p>
+        <p>Todos os direitos reservados a New Age.</p>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        /**
+         * LÓGICA DO CONTROLE DE VÍDEO
+         * Controla a reprodução do vídeo quando clicar no container
+         */
+        const videoContainer = document.querySelector('.video-container');
+        const videoElement = document.querySelector('.video-hero');
+        const playPlayer = document.querySelector('.play-player');
+
+        if (videoContainer && videoElement && playPlayer) {
+            videoContainer.addEventListener('click', function() {
+                // Recomeça o vídeo do início
+                videoElement.currentTime = 0;
+
+                // Verifica se o vídeo está pausado ou não iniciado
+                if (videoElement.paused) {
+                    // Inicia o vídeo
+                    videoElement.play();
+                }
+
+                // Desmuta o vídeo
+                videoElement.muted = false;
+
+                // Esconde o play-player
+                playPlayer.style.display = 'none';
+            });
+        }
+
+        /**
+         * LÓGICA DOS CRONÔMETROS DE CONTAGEM REGRESSIVA
+         * Esta função controla múltiplos timers na página.
+         * @param {string} elementId - O ID do elemento HTML que exibirá o timer.
+         * @param {number} minutes - Minutos iniciais.
+         * @param {number} seconds - Segundos iniciais.
+         */
+        function startCountdown(elementId, minutes, seconds) {
+            let totalSeconds = minutes * 60 + seconds;
+            const timerEl = document.getElementById(elementId);
+
+            if (!timerEl) {
+                console.error(`Elemento do timer #${elementId} não encontrado.`);
+                return;
+            }
+
+            const interval = setInterval(() => {
+                if (totalSeconds <= 0) {
+                    clearInterval(interval);
+                    timerEl.textContent = "00:00";
+                    return;
+                }
+                
+                totalSeconds--;
+                
+                const min = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+                const sec = String(totalSeconds % 60).padStart(2, '0');
+                
+                timerEl.textContent = `${min}:${sec}`;
+            }, 1000);
+        }
+
+        // Inicia os dois timers da página
+        startCountdown('top-countdown-timer', 12, 34);
+        startCountdown('bonusTimer', 12, 34);
+
+        /**
+         * LÓGICA DO ACORDEÃO DE PERGUNTAS FREQUENTES (FAQ)
+         * Cria e gerencia a funcionalidade de abrir/fechar perguntas.
+         */
+        const faqs = [
+            { 
+                pergunta: "O material está atualizado?", 
+                resposta: "Sim, a seleção das questões foi feita com base nas provas mais recentes entre 2010 e 2019, garantindo que o conteúdo esteja alinhado com os temas atuais." 
+            },
+            { 
+                pergunta: "A apostila é indicada para qual série?", 
+                resposta: "A apostila foi desenvolvida para crianças a partir do 4º ano do ensino fundamental, que estão se preparando para o ingresso no 6º ano dos Colégios Militares." 
+            },
+            { 
+                pergunta: "Como recebo o material?", 
+                resposta: "Assim que a compra for confirmada, você recebe o acesso aos itens diretamente no seu e-mail, podendo baixar e usar imediatamente." 
+            },
+            { 
+                pergunta: "Posso imprimir?", 
+                resposta: "Claro! O material está em formato PDF, ideal para ser impresso ou utilizado em qualquer dispositivo eletrônico." 
+            },
+            { 
+                pergunta: "As questões foram elaboradas pelo Colégio Militar?", 
+                resposta: "Sim! As 500 questões foram retiradas de provas anteriores aplicadas nos Colégios Militares, proporcionando um treino fiel ao que realmente cai na prova." 
+            },
+            { 
+                pergunta: "O conteúdo é separado por disciplinas?", 
+                resposta: "Sim, as questões estão organizadas por disciplina — português e matemática — para facilitar o estudo por assunto." 
+            },
+            { 
+                pergunta: "É necessário algum conhecimento prévio?", 
+                resposta: "A criança deve ter no mínimo noções básicas do conteúdo do 4º ano e 5º ano, já que as questões acompanham o nível exigido nos concursos para o 6º ano." 
+            },
+        ];
+
+        const faqList = document.getElementById('faq-accordion-list');
+        if (faqList) {
+            faqList.innerHTML = faqs.map((faq, i) => `
+                <li class="faq-accordion-item${i === 0 ? ' open' : ''}">
+                    <button class="faq-accordion-question" aria-expanded="${i === 0 ? 'true' : 'false'}">
+                        ${faq.pergunta}
+                        <span class="faq-accordion-icon">${i === 0 ? '×' : '+'}</span>
+                    </button>
+                    <div class="faq-accordion-answer">${faq.resposta}</div>
+                </li>
+            `).join('');
+
+            document.querySelectorAll('.faq-accordion-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const item = button.closest('.faq-accordion-item');
+                    const wasOpen = item.classList.contains('open');
+
+                    // Fecha todos os outros itens
+                    document.querySelectorAll('.faq-accordion-item').forEach(otherItem => {
+                        otherItem.classList.remove('open');
+                        otherItem.querySelector('.faq-accordion-question').setAttribute('aria-expanded', 'false');
+                        otherItem.querySelector('.faq-accordion-icon').textContent = '+';
+                    });
+
+                    // Abre o item clicado, se ele não estava aberto
+                    if (!wasOpen) {
+                        item.classList.add('open');
+                        button.setAttribute('aria-expanded', 'true');
+                        button.querySelector('.faq-accordion-icon').textContent = '×';
+                    }
+                });
+            });
+        }
+    });
+    </script>
+</body>
+</html>
