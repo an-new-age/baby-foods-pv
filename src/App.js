@@ -16,8 +16,8 @@ import Footer from './components/Footer';
 
 const infos = {
   heroSection: {
-    headline: '<span style="color: red;">ÚLTIMO AVISO:</span> Pack Exclusívo com 500 Questões Militares Comentadas Pode Sair do Ar em 48 Horas!',
-    subHeadline: 'Quer ver seu filho(a) passar no Colégio Militar? Mais de 500 questões, atualizadas e organizadas para facilitar o estudo.',
+    headline: '<span style="color: red;">🍎Comidinhas do Bebê🍐</span>',
+    subHeadline: '+100 receitas nutritivas e emocionantes para transformar a alimentação do seu bebê',
     ctaButtonText: 'QUERO GARANTIR A APROVAÇÃO',
     vslPath: './assets/vsl1.mp4'
   },
@@ -119,7 +119,7 @@ const infos = {
 function App() {
   return (
     <div className="App">
-      <CountdownBar />
+      {/* <CountdownBar /> */}
       <HeroSection {...infos.heroSection} />
       <FeaturesSection receiveList={infos.receiveList} />
       <TestimonialsCarousel testimonialsPaths={infos.testimonialsPaths} />
