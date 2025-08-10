@@ -33,12 +33,12 @@ const PricingSection = () => {
           <h5 className="best-seller-tag"><strong>Mais Vendido</strong></h5>
           <h3><strong>Mega Kit</strong></h3>
           <img 
-            loading="lazy" 
+            loading="lazy" s
             src="assets/vip-plan.webp" 
             alt="Mockup do Pack Pro" 
-            style={{ maxWidth: '80%', margin: 'auto', borderRadius: '16px' }}
+            style={{ maxWidth: '90%', margin: 'auto', borderRadius: '16px' }}
           />
-          <p className="price-old">De <del>R$197,00</del> por</p>
+          <p className="price-old">De <del>R$97,00</del> por</p>
           <p className="price-new">R$37</p>
           <hr />
           <ul>
