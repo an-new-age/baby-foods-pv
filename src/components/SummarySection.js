@@ -14,7 +14,7 @@ const SummarySection = ({ctaButtonText}) => {
         <br/>
         <p>Ao finalizar a compra, o acesso de todos os seus produtos chega direto no seu e-mail.</p>
       </div>
-      {ctaButtonText && <a href="#vipPlanCTA" class="resume-cta-button">
+      {ctaButtonText && <a href="#vipPlanCTA" class="resume-cta-button" style={{border: 'solid 2px white'}}>
         {ctaButtonText}
       </a>}
     </div>
