@@ -32,25 +32,21 @@ const BonusSection = ({bonuses}) => {
   return (
     <section className="bonus-section container">
       <h2 className="bonus-title">
-        <span>{bonuses.length} Bônus Incrívei{bonuses.length > 1 ? 's' : ''}</span> para quem comprar nos próximos{' '}
-        <span id="bonusTimer">{formatTime()}</span>{' '}minutos
+        <span>{bonuses.length} Bônus que você recebe junto</span>
       </h2>
       
-      {bonuses.map((bonus, index) => (
-        <div key={index} className="bonus-card">
-          <div className="bonus-card-image">
-            <img loading="lazy" src={bonus.image} alt={`Bônus ${index + 1}`} />
-          </div>
-          <div className="bonus-card-content">
-            <span className="bonus-tag">{bonus.tag}</span>
-            <h4>{bonus.title}</h4>
-            <p className="price">
-              Valor: <del>{bonus.price}</del> <span className="free">→ Grátis!</span>
-            </p>
-            <p>{bonus.description}</p>
-          </div>
-        </div>
-      ))}
+      <div className="bonus-card-image">
+        <img loading="lazy" src='assets/bonus/1.webp' alt="Bônus" />
+      </div>
+      <div class="bonus-container"> 
+        <div class="bonus-line">✓ Cardápios prontos por idade</div>
+        <div class="bonus-line">✓ Checklist da introdução alimentar</div>
+        <div class="bonus-line">✓ Guia de texturas por fase</div>
+        <div class="bonus-line">✓ Sugestões para bebês seletivos</div>
+        <div class="bonus-line">✓ Calendário mensal de planejamento</div>
+      </div>
+      
+      
     </section>
   );
 };

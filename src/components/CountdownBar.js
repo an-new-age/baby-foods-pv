@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const CountdownBar = () => {
-  const [timeLeft, setTimeLeft] = useState({ minutes: 12, seconds: 34 });
+  const [timeLeft, setTimeLeft] = useState({ minutes: 49, seconds: 34 });
 
   useEffect(() => {
     const timer = setInterval(() => {

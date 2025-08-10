@@ -5,7 +5,7 @@ const GuaranteeSection = () => {
     <section style={{ textAlign: 'center', marginTop: '48px', marginBottom: '48px', padding: '16px' }}>
       <h1 style={{ fontSize: '32px' }}>Você não tem nada a perder!</h1>
       <br/>
-      <h3>Garantia incondicional de 14 dias!</h3>
+      <h3>Garantia incondicional de 30 dias!</h3>
       <br/>
       <img 
         loading="lazy"
@@ -15,15 +15,15 @@ const GuaranteeSection = () => {
       /> 
       <br/>
       <p style={{ fontWeight: 900 }}>
-        Tenho plena confiança na qualidade e utilidade do nosso material de questões, e para provar isso vou te dar 14 dias de garantia incondicional. Simples, direta e honesta:
+        Se você não amar, devolvemos 100% do seu dinheiro. Simples assim.
       </p>
       <br/>
       <p>
-        Se dentro de 14 dias após sua compra, você não estiver completamente satisfeito(a) com este material, basta nos enviar um e-mail solicitando o reembolso. Devolveremos 100% do seu investimento, sem perguntas e sem complicações.
+        Experimente o eBook por até 30 dias. Se não ficar satisfeita, basta enviar um email e devolvemos integralmente o valor pago, sem perguntas.
       </p>
       <br/>
       <p>
-        Adquira agora mesmo com total segurança, sabendo que seu filho terá duas semanas completas para estudar com nosso material!
+        Risco zero para você. Toda a confiança no nosso produto.
       </p>
     </section>
   );

@@ -18,9 +18,14 @@ const TestimonialsCarousel = ({items, title}) => {
   return items.length ? (
     <section style={{ backgroundColor: '#F0F2F5', padding: '0px 0px' }}>
       <div className="carousel-container">
-        <h2 style={{ fontSize: '35px', marginBottom: '40px', fontFamily: 'Poppins, sans-serif' }}>
+        <h2 style={{ fontSize: '2rem', marginBottom: '40px', fontFamily: 'Poppins, sans-serif' }}>
           {title}
         </h2>
+
+        <p style={{ textAlign: 'left', padding: '0px 20px' }}>Mais de 10.000 mamães já estão usando o eBook e tendo resultados incríveis! Veja o que algumas delas disseram:</p>
+        <br/>
+        <br/>
+        <br/>
         
         <div className="carousel-track">
           {<img class="print" src={items[currentSlide]} />}

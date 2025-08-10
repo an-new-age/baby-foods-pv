@@ -71,23 +71,22 @@ const HeroSection = ({
         </video>
       </div>
 
-      <h1>
-        <div dangerouslySetInnerHTML={{ __html: headline }} />
-      </h1>
-      
-      {subHeadline && <p><div dangerouslySetInnerHTML={{ __html: subHeadline }} /></p>}
+        <h1 style={{fontSize: '2rem'}}>
+          <div dangerouslySetInnerHTML={{ __html: headline }} />
+        </h1>
+        
+        {subHeadline && <p><div dangerouslySetInnerHTML={{ __html: subHeadline }} /></p>}
 
       <div style={{ textAlign: 'center' }}>
-        <h3>Tá no preço de banana, mas não é de graça…</h3>
-        <br />
+        {/* <h4>Tá no preço de banana, mas não é de graça…</h4>
         <span style={{color: 'white'}}>Porque o que é de graça, ninguém valoriza!</span>
         <br />
         <br />
         <span style={{color: 'white'}}>Esse livrinho foi feito com amor e tá só <strong>R$19,90</strong> — é quase um presente! 💛</span>
         <br />
-        <br />
+        <br /> */}
         <div style={{ 
-          backgroundColor: "#f2e4ae",
+          backgroundColor: "#f2e4aeA0",
           color: '#944312',
           width: '100%',
           textAlign: 'center',
@@ -97,9 +96,9 @@ const HeroSection = ({
          }}>
             <span>📚 São +100 receitas por fase e textura, pra facilitar sua rotina e cuidar da saúde do bebê. 👶✨💡</span>
          </div>
-        <br />
+        {/* <br />
         <div style={{ 
-          backgroundColor: "#d3dfff",
+          backgroundColor: "#d3dfffA0",
           color: '#1D4ED8',
           width: '100%',
           textAlign: 'center',
@@ -111,6 +110,7 @@ const HeroSection = ({
             <br/>
             <span>Usa o cumpom <strong>DANI10</strong> e ganha desconto!</span>
          </div>
+        
         <br />
         <div style={{
           color: '#944312',
@@ -121,7 +121,7 @@ const HeroSection = ({
           borderRadius: '16px'
          }}>
             <span>⏳Corre antes que o valor suba!</span>
-         </div>
+         </div> */}
       </div>
       
       {ctaButtonText && <a href="#vipPlanCTA" className="cta-button">

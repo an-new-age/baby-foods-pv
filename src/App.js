@@ -16,7 +16,7 @@ import Footer from './components/Footer';
 
 const infos = {
   heroSection: {
-    headline: '<span style="color: red;">🍎Comidinhas do Bebê🍐</span>',
+    headline: '<span style="color: #E11D48; font-weight: 900;">🍎Comidinhas do Bebê🍐</span>',
     subHeadline: '+100 receitas nutritivas e emocionantes para transformar a alimentação do seu bebê',
     ctaButtonText: 'QUERO TRANSFORMAR A ALIMENTAÇÃO DO MEU BEBÊ',
     vslPath: './assets/vsl1.mp4'
@@ -30,13 +30,14 @@ const infos = {
     'Garantia incondicional de 30 dias',
   ],
   testimonialsPaths: {
-    title: "Depoimentos",
+    title: "💬 O que as mamães estão falando?",
     items: [
-      './assets/depoimento (1).png',
-      './assets/depoimento (2).png',
-      './assets/depoimento (3).png',
-      './assets/depoimento (4).png',
-      './assets/depoimento (5).png'
+      './assets/testmonial/6.jpg',
+      './assets/testmonial/5.jpg',
+      './assets/testmonial/1.jpg',
+      './assets/testmonial/2.jpg',
+      './assets/testmonial/3.jpg',
+      './assets/testmonial/4.jpg',
     ]
   },
   insideEbook: {
@@ -78,31 +79,45 @@ const infos = {
       'Que tentaram de tudo e ainda não viram resultado',
       'Que querem transformar a hora da comida em um momento feliz',
       'Mães que trabalham e precisam de praticidade',
-      'Garantia incondicional de 7 dias',
+      'Garantia incondicional de 30 dias',
     ]
   },
-  bonuses: [
-    {
+  bonuses: [   
+  {
       tag: 'BÔNUS 1',
-      title: 'Como não cair nas pegadinhas das questões',
+      title: '✓ Cardápios prontos por idade',
       price: 'R$37,00',
       description: 'Guia teórico de tipos de pegadinhas que a Banca costuma por na prova para seu filho ficar atento.',
-      image: 'assets/pegadinha.jpg'
+      image: 'assets/bonus/1.webp'
     },
-    {
-      tag: 'BÔNUS 2',
-      title: 'Mapa de conteúdo',
+  {
+      tag: 'BÔNUS 1',
+      title: '✓ Checklist da introdução alimentar',
       price: 'R$37,00',
-      description: 'Veja quais são os assuntos de português e matemática que mais caem na prova, para poder acertar mais questões de maneira inteligente!',
-      image: 'assets/mapa-mental.webp'
+      description: 'Guia teórico de tipos de pegadinhas que a Banca costuma por na prova para seu filho ficar atento.',
+      image: 'assets/bonus/2.webp'
     },
-    {
-      tag: 'BÔNUS 3',
-      title: 'Como fazer seu filho gostar do estudo',
+  {
+      tag: 'BÔNUS 1',
+      title: '✓ Guia de texturas por fase',
       price: 'R$37,00',
-      description: 'Guia embasado em psicologia com truques simples para fazer seu filho ter interesse e aprender a gostar de estudar!',
-      image: 'assets/fml-flz.webp'
-    }
+      description: 'Guia teórico de tipos de pegadinhas que a Banca costuma por na prova para seu filho ficar atento.',
+      image: 'assets/bonus/3.webp'
+    },
+  {
+      tag: 'BÔNUS 1',
+      title: '✓ Sugestões para bebês seletivos',
+      price: 'R$37,00',
+      description: 'Guia teórico de tipos de pegadinhas que a Banca costuma por na prova para seu filho ficar atento.',
+      image: 'assets/bonus/4.webp'
+    },
+  {
+      tag: 'BÔNUS 1',
+      title: '✓ Calendário mensal de planejamento',
+      price: 'R$37,00',
+      description: 'Guia teórico de tipos de pegadinhas que a Banca costuma por na prova para seu filho ficar atento.',
+      image: 'assets/bonus/5.webp'
+    },
   ],
   faqs: [
     { 
@@ -139,8 +154,9 @@ const infos = {
 function App() {
   return (
     <div className="App">
-      {/* <CountdownBar /> */}
+      <CountdownBar />
       <HeroSection {...infos.heroSection} />
+      <AdvantagesSection advantages={infos.advantages} />
       <div style={{ padding: '16px' }}>
         <h2 style={{color: '#E11D48'}}>"Meu bebê não quer comer... o que eu faço?"</h2>
         <br />
@@ -163,17 +179,20 @@ function App() {
         </div>
         <br />
       </div>
-      <AdvantagesSection advantages={infos.advantages} />
       <TargetAudienceSection targets={infos.targets} />
       <TestimonialsCarousel {...infos.insideEbook} />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       {/* <FeaturesSection receiveList={infos.receiveList} /> */}
+      <BonusSection bonuses={infos.bonuses} />
       <TestimonialsCarousel {...infos.testimonialsPaths} />
       {/* <StepsSection /> */}
-      <BonusSection bonuses={infos.bonuses} />
       <PricingSection />
       <SummarySection ctaButtonText={infos.heroSection.ctaButtonText } />
       <GuaranteeSection />
-      <FAQSection faqs={infos.faqs} />
+      {/* <FAQSection faqs={infos.faqs} /> */}
       <Footer />
     </div>
   );

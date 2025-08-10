@@ -1,13 +1,21 @@
 /* =================================
    Barra de Contagem Regressiva Fixa
 ================================= */
+
+:root {
+    --primary-color: rgb(223, 121, 203);
+    --secondary-color: rgb(223, 121, 203);
+    --tertiary-color: rgb(223, 121, 203);
+    --quarth-color: #f5f0f4;
+}
+
 .countdown-bar-fixed {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 9999;
-    background-color: #FFB6A7;
+    background-color: var(--primary-color);
     color: red;
     font-family: 'Roboto', Arial, sans-serif;
     font-size: 20px;
@@ -30,7 +38,7 @@ html {
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f2f5;
+    background-color: var(--quarth-color);
     color: #333;
     /* Garante que o conteúdo não fique escondido atrás da barra do topo */
     /* padding-top: 60px; */
@@ -65,7 +73,7 @@ body {
     left: 0;
     width: 100%;
     z-index: 9999;
-    background-color: #f0eae9;
+    background-color: #f3c8c1;
     color: red;
     font-family: 'Roboto', Arial, sans-serif;
     font-size: 20px;
@@ -103,7 +111,7 @@ body {
     min-height: 300px;
     width: 100%;
     padding: 40px 16px 80px 16px;
-    background: linear-gradient(153deg, #e2998a 45%, #df9e91 100%);
+    background: linear-gradient(153deg, var(--secondary-color) 45%, var(--tertiary-color) 100%);
     color: #FFFFFF;
     /* color: #ecf1fe; */
     text-align: center;
@@ -147,7 +155,7 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     font-size: 28px;
-    color: #faa898;
+    color: var(--secondary-color);
 }
 
 .image-showcase-section .section-title span {
@@ -157,7 +165,7 @@ body {
 .image-showcase-section .showcase-image {
     max-width: 100%;
     height: auto;
-    box-shadow: 0 4px 15px #faa898;
+    box-shadow: 0 4px 15px var(--secondary-color);
     border-radius: 8px;
 }
 
@@ -169,7 +177,7 @@ body {
     Seção de Depoimentos e Vantagens
 ================================= */
 .features-section {
-    background-color: #FFFFFF;
+    background-color: var(--quarth-color);
     padding: 60px 20px;
 }
 
@@ -240,7 +248,7 @@ body {
 }
 
 .advantage-card {
-    background: linear-gradient(165deg, #db9485 4%, #d6998c 69%);
+    background: linear-gradient(165deg, var(--secondary-color) 4%, var(--secondary-color) 69%);
     color: #ffffff;
     padding: 28px;
     border-radius: 20px;
@@ -266,7 +274,7 @@ body {
     Seção de Bônus
 ================================= */
 .bonus-section {
-    background-color: #f0f2f5;
+    background-color: var(--quarth-color);
     padding: 0px 20px 60px 20px;
 }
 
@@ -295,7 +303,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    background: linear-gradient(132deg, #db9485 4%, #d6998c 69%);
+    background: linear-gradient(132deg, var(--secondary-color) 4%, var(--secondary-color) 69%);
     border-radius: 15px;
     padding: 40px;
     color: #FFFFFF;
@@ -344,7 +352,27 @@ body {
 }
 
 .bonus-card-content .price .free {
-    color: #00FF00;
+    color: #c3ffc3;
+}
+
+.bonus-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* padding: 20px; */
+    gap: 4px;
+}
+
+.bonus-line {
+    text-align: left !important;
+    padding: 16px 32px;
+    background-color: var(--secondary-color);
+    width: 100%;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+
 }
 
 .bonus-card-content p {
@@ -468,7 +496,7 @@ body {
     Seção de FAQ (Perguntas Frequentes)
 ================================= */
 .faq-section {
-    background: linear-gradient(165deg, #faa898 62%, #FFB6A7 100%);
+    background-image: linear-gradient(165deg, var(--secondary-color) 62%, var(--tertiary-color) 100%);
     padding: 60px 20px;
     width: 100%;
 }
@@ -507,7 +535,7 @@ body {
 }
 
 .faq-accordion-question:hover {
-    background: #FDB0A1;
+    background: var(--tertiary-color);
 }
 
 .faq-accordion-icon {
@@ -547,10 +575,10 @@ body {
     Rodapé
 ================================= */
 footer {
-    background-color: #faa898;
+    background-color: var(--secondary-color);
     color: #FFFFFF;
     text-align: center;
-    padding: 40px 20px;
+    padding: 20px 20px;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
 }
@@ -618,7 +646,7 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #F0F2F5;
+    background-color: var(--quarth-color);
     padding: 32px 0;
     overflow: hidden;
 }
@@ -666,7 +694,7 @@ footer {
 }
 
 .carousel-button:hover {
-    background-color: #FFB6A7;
+    background-color: var(--primary-color);
 }
 
 .carousel-dots {
@@ -686,7 +714,7 @@ footer {
 }
 
 .dot.active {
-    background-color: #FFB6A7;
+    background-color: var(--primary-color);
 }
 
 /* Card Styles */
@@ -710,7 +738,7 @@ footer {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #FFB6A7, #ffd0c6);
+    background: linear-gradient(135deg, var(--secondary-color) 4%, var(--secondary-color) 69%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -772,27 +800,27 @@ footer {
     font-size: 16px;
     line-height: 1.6;
     color: #555;
-    border-left: 4px solid #FFB6A7;
+    border-left: 4px solid var(--primary-color);
     margin-top: 15px;
     text-align: left;
 }
 
 .depoiment-highlight {
-    color: #FFB6A7;
+    color: var(--primary-color);
     font-weight: bold;
 }
 
 .video-hero {
     /* aspect-ratio: 3 / 5; */
-    width: 90vw;
+    width: 70vw;
     height: auto;
     border-radius: 30px;
-    border: #FFB6A7 2px solid;
+    border: var(--primary-color) 2px solid;
     object-fit: cover;
 }
 
 .poc {
-    border: #FFB6A7 2px solid;
+    border: var(--primary-color) 2px solid;
     border-radius: 8px;
     width: 70vw;
 }
