@@ -866,7 +866,7 @@ footer {
     /* aspect-ratio: 3 / 5; */
     width: 70vw;
     height: auto;
-    border-radius: 30px;
+    border-radius: 16px;
     border: var(--primary-color) 2px solid;
     object-fit: cover;
 }
