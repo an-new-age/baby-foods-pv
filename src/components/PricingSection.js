@@ -23,7 +23,7 @@ const PricingSection = () => {
             </strong> <br/>
             Temos uma oferta <span style={{ color: 'rgb(212, 148, 28)' }}>AINDA MAIS</span> vantajosa para você! {' '}
             <br /> */}
-            Leve mais e pague menos com o kit completo <span style={{ color: 'rgb(212, 148, 28)' }}>
+              Leve mais e pague menos com o kit completo <span style={{ color: 'rgb(212, 148, 28)' }}>
               <br/>
               Mega Kit!</span>👇
           </p>

@@ -13,13 +13,14 @@ import SummarySection from './components/SummarySection';
 import GuaranteeSection from './components/GuaranteeSection';
 import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
+import Preview from './components/Preview';
 
 const infos = {
   heroSection: {
     headline: '<span style="color: #E11D48; font-weight: 900;">🍎Comidinhas do Bebê🍐</span>',
     subHeadline: '+100 receitas nutritivas e emocionantes para transformar a alimentação do seu bebê',
     ctaButtonText: 'QUERO TRANSFORMAR A ALIMENTAÇÃO DO MEU BEBÊ',
-    vslPath: './assets/vsl1.mp4'
+    vslPath: './assets/vsl.mp4'
   },
   receiveList: [
     'Mães com bebês entre 6 e 12 meses',
@@ -32,12 +33,10 @@ const infos = {
   testimonialsPaths: {
     title: "💬 O que as mamães estão falando?",
     items: [
-      './assets/testmonial/6.jpg',
-      './assets/testmonial/5.jpg',
-      './assets/testmonial/1.jpg',
-      './assets/testmonial/2.jpg',
-      './assets/testmonial/3.jpg',
-      './assets/testmonial/4.jpg',
+      './assets/testmonial/4.jpeg',
+      './assets/testmonial/1.jpeg',
+      './assets/testmonial/2.jpeg',
+      './assets/testmonial/3.jpeg',
     ]
   },
   insideEbook: {
@@ -180,10 +179,8 @@ function App() {
         <br />
       </div>
       <TargetAudienceSection targets={infos.targets} />
-      <TestimonialsCarousel {...infos.insideEbook} />
-      <br/>
-      <br/>
-      <br/>
+      {/* <TestimonialsCarousel {...infos.insideEbook} /> */}
+      <Preview />
       <br/>
       {/* <FeaturesSection receiveList={infos.receiveList} /> */}
       <BonusSection bonuses={infos.bonuses} />

@@ -53,7 +53,7 @@ const HeroSection = ({
   }, []);
 
   return (
-    <section className="hero-section">
+    <section className="hero-section" style={{ paddingTop: '96px' }}>
       <div className="video-container">
         <div className="play-player">
           <p>Seu video começou</p>
