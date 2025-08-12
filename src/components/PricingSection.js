@@ -13,7 +13,7 @@ const PricingSection = () => {
           <ul>
             <li><strong>✅ 10 Receitinhas Nutritivas para seu Bebê</strong></li>
           </ul>
-          <a href="https://pay.kiwify.com.br/JaEkBps" className="cta-button">
+          <a href="https://pay.kiwify.com.br/t7kyRSL" className="cta-button">
             Quero a oferta simples
           </a>
           <br />
@@ -52,7 +52,7 @@ const PricingSection = () => {
             <li><strong>✅ Garantia de 30 Dias</strong></li>
             <li><strong>✅ Suporte por Whatsapp</strong></li>
           </ul>
-          <a href="https://pay.kiwify.com.br/8gso4A3" id="vipPlanCTA" className="cta-button">
+          <a href="https://pay.kiwify.com.br/cFhOadc" id="vipPlanCTA" className="cta-button">
             👉 Quero as receitinhas agora! 🍎
           </a>
         </div>
