@@ -34,6 +34,8 @@ const BonusSection = ({bonuses}) => {
       <h2 className="bonus-title">
         <span>{bonuses.length} Bônus que você recebe junto</span>
       </h2>
+      <br />
+      <br />
       
       <div className="bonus-card-image">
         <img loading="lazy" src='assets/bonus/1.webp' alt="Bônus" />
